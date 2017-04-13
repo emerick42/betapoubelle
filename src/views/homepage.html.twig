@@ -1,1 +1,22 @@
-New new homepage
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <marquee>😂 Bienvenue sur BetaSeries{% if user %} {{ user.name }}{% endif %} 😂</marquee>
+
+    <h1>déjà {{ visits }} visites sur Betaseries!!!!</h1>
+
+    <form>
+        Connection <input name="connection">
+        Mot de passe <input type="password" name="motdepasse">
+        <input type="submit">
+    </form>
+
+    <h3>Les séries du moment</h3>
+    <a href="breaking-bad.php">Beaking Bad</a>
+    <a href="the-walking-dead.php">The Walking Dead</a>
+
+    {% if user %}
+        <h3>Tes séries à toi</h3>
+        <a href="tes-series.php?toi={{ user.token }}">Ta liste personnalisée</a>
+    {% endif %}
+{% endblock %}
